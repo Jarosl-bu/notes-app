@@ -40,6 +40,7 @@ cd flask-notes-app
 
 ```bash
 python -m venv venv
+```
 
 ### 3. Activate environment
 
