@@ -1,0 +1,51 @@
+{% extends 'admin/admin_base.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block dashboard %}
+   <div>
+
+      <form class="admin-btn" methos="GET" action="{{ url_for('admin.users') }}">
+         <button class="btn btn-outline-light">Users</button>
+      </form>
+
+      <form class="admin-btn" methos="GET" action="{{ url_for('admin.notes') }}">
+         <button class="btn btn-outline-light">Notes</button>
+      </form>
+
+      <form class="admin-btn" action="{{ url_for('notes.index') }}">
+         <button class="btn btn-outline-light">User's panel</button>
+      </form>
+
+   </div>
+{% endblock %}
+
+{% block body %}
+
+{% for note in notes %}
+<div class="ms-3">
+
+   <h3> {{ note.title }}</h3><br> 
+   <form method="POST" action="{{ url_for('admin.delete_user_note', note_id=note.id) }}">
+      <button class="ms-0 btn btn-outline-light" type="submit">Delete this note</button>
+   </form> <br>
+   {% for t in note.text.replace('• ', '').split('\n') %}
+      {% if note.type=="text" %}
+         <p>{{ t }}</p>
+      {% else %}
+         <p>• {{ t }}</p> 
+      {% endif %}
+   {% endfor %}
+   <time datetime="{{ note.datetime.isoformat() }}">
+      {{ note.datetime.strftime('%d.%m.%Y %H:%M')}}
+   </time>
+   <p>{{ note.author.username }}</p>
+
+   <hr>
+
+</div>
+
+{% endfor %}
+
+
+{% endblock %}

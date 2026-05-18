@@ -1,0 +1,27 @@
+{% extends 'auth/auth_base.html' %}
+
+{% block title %}Create a note{% endblock %}
+
+{% block body %}
+    <div>
+        <div class="center"><h1>Please, register</h1></div>
+
+        {% for msg in get_flashed_messages() %}
+        <p>{{ msg }}</p>
+        {% endfor %}
+        <div class="wrapper">
+
+            <form method = "POST" action="/auth/register">
+
+                <input class="form-control" type="text" placeholder="username" name = "username" required><br>
+                <input class="form-control" type="email" placeholder="email" name="email" required><br>
+                <input class="form-control" type="password" placeholder="password" name="password"><br>
+                <input class="form-control" type="password" placeholder="repeat password" name="repeat_password"><br>
+
+                <input type="submit" class="btn btn-outline-light" value = "Submit">
+        
+            </form>
+
+        </div>
+    </div>
+    {% endblock %}

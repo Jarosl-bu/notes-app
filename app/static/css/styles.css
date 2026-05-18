@@ -1,0 +1,54 @@
+#header{
+    display: flex;
+    justify-content: center;
+}
+.center{
+    display: flex;
+    justify-content: center;
+}
+
+h1{
+    margin-left: 10px;
+}
+
+.title{
+    color: rgba(226, 211, 0, 0.964);
+}
+
+.first-point{
+    display: inline;
+}
+
+#container input{
+    margin-bottom: 10px;
+}
+
+.btn{
+    margin: 10px;
+}
+
+#text{
+    margin-bottom: 20px;
+    margin-left: 10px;
+    width: 500px;
+}
+
+#title{
+    width: 400px;
+    margin-bottom: 20px;
+    margin-left: 10px;
+}
+
+.btn-form{
+    display: inline;
+}
+
+.wrapper{
+    width: 400px;
+    margin:0 auto;
+}
+
+.admin-btn{
+    display: inline;
+}
+

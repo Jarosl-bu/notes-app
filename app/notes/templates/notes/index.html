@@ -1,0 +1,36 @@
+{% extends 'notes/notes_base.html' %}
+
+{% block title %}My notes{% endblock %}
+{% block body %}
+
+
+   
+   <div>
+      
+      {% for msg in get_flashed_messages() %}
+      <div class="alert alert-success">
+         {{ msg }}
+     </div>
+      {% endfor %}
+      {% for note in notes %}
+
+      <h3> {{ note.title }}</h3><br>
+      {% for t in note.text.replace('• ', '').split('\n') %}
+         {% if note.type=="text" %}
+            <p>{{ t }}</p><br>
+         {% else %}
+            <p>• {{ t }}</p><br>
+         {% endif %}
+      {% endfor %}
+      <time datetime="{{ note.datetime.isoformat() }}">
+         {{ note.datetime.strftime('%d.%m.%Y %H:%M')}}
+      </time><br>
+      <form class="btn-form" method="POST" action="/notes/delete/{{ note.id }}"><button class="btn btn-outline-light" type="submit">Delete</button></form>
+      <form class="btn-form" method="GET" action="/notes/edit/{{ note.id }}"><button class="btn btn-outline-light" type="submit">Edit</button></form>
+      <hr>
+      {% endfor %}
+   </div>
+
+
+   <script src="{{ url_for('static', filename='js/index.js') }}" defer></script>
+{% endblock %}

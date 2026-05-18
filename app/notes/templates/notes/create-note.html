@@ -1,0 +1,19 @@
+{% extends 'notes/notes_base.html' %}
+
+{% block title %}Create a note{% endblock %}
+
+{% block body %}
+    <div class="center"><h1>Add a note</h1></div>
+
+    <div class="center">
+
+        <form method = "POST" action="/notes/create-note">
+
+            <input type="hidden" name="note" value="text">
+            <input class="form-control" type="text" placeholder="Title" name = "title" id = "title" required><br>
+            <textarea class="form-control" rows="5" placeholder="Your note here..." name="text" id="text" required></textarea><br>
+            <button type="submit" class="btn btn-outline-light">Submit</button>
+    
+        </form>
+    </div>
+    {% endblock %}

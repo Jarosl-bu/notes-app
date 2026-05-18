@@ -1,0 +1,32 @@
+{% extends 'notes/notes_base.html' %}
+
+{% block title %}Create a list{% endblock %}
+
+{% block body %}
+        
+            <h1 id = header>Add a list</h1> <br>
+            <div class = center>
+                <form method = "POST" action="/notes/create-list">
+
+                    <input type="hidden" name="list" value="list">
+                    <input type="text" placeholder="Title" name = "title" id = "title" class="form-control d-inline-block w-auto" required>
+
+                    <div id="container">
+                        <div class = first-delete>
+                            <p class="first-point">• </p>
+                            <input class="form-control d-inline-block w-auto" id="first-point" type="text" name = "list_text[]" placeholder="type something">
+                            <button type="button" class="btn btn-outline-light" id="first-delete-btn">Delete</button><br>
+                        </div>
+                    </div>
+
+                    
+
+                    <template id="template"><input type="text" name = "list_text[]" placeholder="type something" class="form-control d-inline-block w-auto"></template>
+
+                    <button type="submit" class="btn btn-outline-light" >Submit</button>
+                    <button type="button" class="btn btn-outline-light js-add-input-btn">Add point</button>
+                </form>
+            </div>
+
+            <script src="{{ url_for('static', filename='js/create-list.js') }}" defer></script>
+{% endblock %}

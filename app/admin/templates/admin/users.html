@@ -1,0 +1,48 @@
+{% extends 'admin/admin_base.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block dashboard %}
+   <div>
+
+      <form class="admin-btn" methos="GET" action="{{ url_for('admin.users') }}">
+         <button class="btn btn-outline-light">Users</button>
+      </form>
+
+      <form class="admin-btn" methos="GET" action="{{ url_for('admin.notes') }}">
+         <button class="btn btn-outline-light">Notes</button>
+      </form>
+
+      <form class="admin-btn" action="{{ url_for('notes.index') }}">
+        <button class="btn btn-outline-light">User's panel</button>
+      </form>
+      
+   </div>
+{% endblock %}
+
+{% block body %}
+
+
+{% for user in users %}
+
+<div class="ms-3">
+
+    <h3> {{ user.username }}</h3> 
+    <form method="POST" action="{{ url_for('admin.ban_user', user_id=user.id) }}">
+        <button class="ms-0 btn btn-outline-light" type="submit">Ban this user</button>
+    </form> <br>
+    <p>{{ user.email }}</p>
+    {% if not user.is_admin %}
+    <p>User</p>
+    {% else %}
+    <p>Admin</p>
+    {% endif %}
+
+    <hr>
+
+</div>
+
+{% endfor %}
+
+
+{% endblock %}

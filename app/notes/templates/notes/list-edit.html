@@ -1,0 +1,32 @@
+{% extends 'notes/notes_base.html' %}
+
+{% block title %}Create a list{% endblock %}
+
+{% block body %}
+            <h1 id = header>Edit the list</h1> <br>
+            <div class = center>
+                <form method = "POST" action="/notes/edit/{{ note.id }}">
+                    <input type="hidden" name="list" value="list">
+                    <input class="form-control d-inline-block w-auto" type="text" placeholder="Title" name = "title" id = "title" value="{{ note.title }}" required>
+
+                    <div id="container">
+                        {% for t in note.text.replace('• ', '').split('\n') %}
+                        <div class = "first-delete">
+                            <span class="first-point-p">• </span>
+                            <input class="form-control d-inline-block w-auto js-first-point" type="text" name = "list_text[]" placeholder="type something" value="{{ t }}">
+                            <button type="button" class="btn btn-outline-light js-first-delete-btn">Delete</button><br>
+                        </div>
+                        {% endfor %}
+                    </div>
+
+                    
+
+                    <template id="template"><input class="form-control d-inline-block w-auto" type="text" name = "list_text[]" placeholder="type something"></template>
+
+                    <button class="btn btn-outline-light" type="submit">Submit</button>
+                    <button type="button" class="btn btn-outline-light js-add-input-btn">Add point</button>
+                </form>
+            </div>
+
+            <script src="{{ url_for('static', filename='js/list-edit.js') }}" defer></script>
+{% endblock %}
