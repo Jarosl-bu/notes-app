@@ -65,6 +65,7 @@ python run.py
 Then open:
 
 http://127.0.0.1:5000/
+<pre>
 ##📁 Project Structure
 project/
 │
@@ -81,6 +82,7 @@ project/
 ├── .gitignore
 ├── requirements.txt
 ├── run.py
+</pre>
 🔐 Security
 Passwords are hashed using Werkzeug
 Admin routes are protected
