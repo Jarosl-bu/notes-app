@@ -51,7 +51,7 @@ venv\Scripts\activate
 Mac/Linux:
 
 source venv/bin/activate
-## 4. Install dependencies
+### 4. Install dependencies
 pip install -r requirements.txt
 ⚙️ Environment Variables
 
@@ -65,7 +65,7 @@ python run.py
 Then open:
 
 http://127.0.0.1:5000/
-📁 Project Structure
+##📁 Project Structure
 project/
 │
 ├── app/
